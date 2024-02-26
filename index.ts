@@ -9,7 +9,7 @@
 
 import { createPrompt } from 'bun-promptx'
 
-function checkBoardLength(width: float, height: float) {
+function checkBoardLength(width, height) {
   const boardFoot = 144
   return boardFoot / (width * height)
 }
