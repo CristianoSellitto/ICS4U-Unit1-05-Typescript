@@ -9,36 +9,25 @@
 
 import { createPrompt } from 'bun-promptx'
 
-// Generate an integer from 1-6
-const randomInt = Math.floor(Math.random() * 6) + 1
+function checkBoardLength(width: float, height: float) {
+  const boardFoot = 144
+  return boardFoot / (width * height)
+}
 
-// Guess loop
-let guesses = 0
-while (true) {
-  // Guessed string
-  const stringGuess = createPrompt('Choose a number from 1 to 6: ')
+// String values
+const stringWidth = createPrompt('Enter width (in): ')
+const stringHeight = createPrompt('Enter height (in) ')
 
-  if (stringGuess.value == "quit") {
-    break
-  }
-
-  // Convert guess to integer and check for errors
-  const intGuess = parseInt(stringGuess.value)
-  if (isNaN(intGuess) == true || intGuess > 6 || intGuess < 1) {
-    // Invalid input
-    console.log('Invalid input.\n')
-  } else {
-    // Valid input
-    if (intGuess == randomInt) {
-      console.log(`\nYou guessed correctly in ${guesses + 1} guess(es).`)
-      break
-    } else if (intGuess > randomInt) {
-      console.log('Your guess is too high.\n')
-    } else if (intGuess < randomInt) {
-      console.log('Your guess is too low.\n')
-    }
-  }
-  guesses++
+// Convert variables to integer and check for errors
+const width = parseFloat(stringWidth.value)
+const height = parseFloat(stringHeight.value)
+if (isNaN(width) == true || width < 0 || isNaN(height) == true || height < 0) {
+  // Invalid input
+  console.log('Invalid input.\n')
+} else {
+  // Valid input
+  const length = checkBoardLength(width, height)
+  console.log(`To get one board foot, the wood needs to be ${length} inches long`)
 }
 
 // Show the program as done
