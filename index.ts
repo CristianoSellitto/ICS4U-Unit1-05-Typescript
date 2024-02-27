@@ -1,10 +1,10 @@
 /**
 *
-* This program generates a random integer from one to six for the user to guess
+* This program checks how long wood needs to be one board foot long
 *
 * By:      Cristiano Sellitto
 * Version: 1.0
-* Since:   2024-02-23
+* Since:   2024-02-26
 */
 
 import { createPrompt } from 'bun-promptx'
